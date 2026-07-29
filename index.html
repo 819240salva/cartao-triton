@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Triton Serviço Empresarial | Anderson Salvador</title>
+  <meta name="description" content="BPO Financeiro, regularização empresarial e Carnê-Leão com atendimento personalizado.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy-950:#03101f;
+      --navy-900:#061a33;
+      --navy-800:#0a2a50;
+      --navy-700:#123d6a;
+      --gold-500:#d7b13d;
+      --gold-400:#eccb63;
+      --white:#ffffff;
+      --text:#e9eff7;
+      --muted:#b9c7d8;
+      --border:rgba(215,177,61,.28);
+      --surface:rgba(255,255,255,.055);
+      --surface-hover:rgba(255,255,255,.085);
+      --shadow:0 24px 70px rgba(0,0,0,.38);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      font-family:"Poppins",sans-serif;
+      color:var(--white);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(38,91,145,.55), transparent 34%),
+        linear-gradient(180deg,var(--navy-800),var(--navy-950));
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+    }
+
+    button,
+    a{
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    .page{
+      width:100%;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:0;
+    }
+
+    .card{
+      width:100%;
+      min-height:100vh;
+      background:
+        linear-gradient(180deg,rgba(10,42,80,.97),rgba(3,16,31,.98));
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before,
+    .card::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      filter:blur(80px);
+      pointer-events:none;
+    }
+
+    .card::before{
+      width:340px;
+      height:340px;
+      background:rgba(215,177,61,.08);
+      top:-140px;
+      left:-100px;
+    }
+
+    .card::after{
+      width:420px;
+      height:420px;
+      background:rgba(35,95,155,.12);
+      bottom:-180px;
+      right:-150px;
+    }
+
+    .hero{
+      position:relative;
+      z-index:1;
+      text-align:center;
+      padding:40px 20px 30px;
+      border-bottom:1px solid rgba(215,177,61,.18);
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      margin-bottom:24px;
+    }
+
+    .brand-symbol{
+      font-size:58px;
+      line-height:1;
+      color:var(--gold-500);
+      text-shadow:0 8px 26px rgba(215,177,61,.22);
+    }
+
+    .brand-name{
+      margin-top:2px;
+      font-family:"Cinzel",serif;
+      font-size:40px;
+      letter-spacing:6px;
+      color:var(--gold-500);
+      line-height:1;
+    }
+
+    .brand-subtitle{
+      margin-top:8px;
+      font-family:"Cinzel",serif;
+      font-size:12px;
+      letter-spacing:4px;
+      color:var(--white);
+    }
+
+    .photo-frame{
+      width:178px;
+      height:178px;
+      margin:0 auto 20px;
+      padding:5px;
+      border-radius:18px;
+      background:linear-gradient(145deg,var(--gold-400),var(--gold-500));
+      box-shadow:
+        0 18px 40px rgba(0,0,0,.35),
+        0 0 0 5px rgba(215,177,61,.09);
+    }
+
+    .photo{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      object-position:center;
+      border-radius:12px;
+      background:#eef2f7;
+    }
+
+    .name{
+      font-size:32px;
+      font-weight:700;
+      letter-spacing:1px;
+      text-transform:uppercase;
+    }
+
+    .role{
+      margin-top:8px;
+      color:var(--gold-400);
+      font-size:18px;
+      font-weight:500;
+    }
+
+    .intro{
+      max-width:760px;
+      margin:0 auto;
+      padding:28px 28px 16px;
+      text-align:center;
+      color:var(--text);
+      font-size:15px;
+      line-height:1.75;
+      position:relative;
+      z-index:1;
+    }
+
+    .section{
+      width:min(1100px,100%);
+      margin:0 auto;
+      padding:10px 24px 28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:18px;
+      color:var(--gold-400);
+      font-size:14px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      justify-content:center;
+    }
+
+    .section-title::before,
+    .section-title::after{
+      content:"";
+      height:1px;
+      flex:1;
+      max-width:180px;
+      background:linear-gradient(90deg,transparent,var(--border));
+    }
+
+    .section-title::after{
+      background:linear-gradient(90deg,var(--border),transparent);
+    }
+
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .service-card{
+      min-height:160px;
+      padding:24px 20px;
+      border-radius:18px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:center;
+      transition:.25s ease;
+      box-shadow:0 12px 30px rgba(0,0,0,.12);
+    }
+
+    .service-card:hover{
+      transform:translateY(-5px);
+      background:var(--surface-hover);
+      border-color:rgba(215,177,61,.58);
+      box-shadow:0 18px 36px rgba(0,0,0,.2);
+    }
+
+    .service-icon{
+      font-size:28px;
+      margin-bottom:10px;
+    }
+
+    .service-card h3{
+      color:var(--gold-400);
+      font-size:17px;
+      margin-bottom:9px;
+    }
+
+    .service-card p{
+      color:var(--text);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .links-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
+
+    .action{
+      min-height:56px;
+      padding:13px 18px;
+      border:none;
+      border-radius:13px;
+      background:linear-gradient(135deg,var(--gold-500),var(--gold-400));
+      color:#071321;
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.25s ease;
+      box-shadow:0 10px 24px rgba(0,0,0,.16);
+    }
+
+    .action:hover{
+      transform:translateY(-3px);
+      filter:brightness(1.04);
+      box-shadow:0 14px 28px rgba(0,0,0,.24);
+    }
+
+    .action.secondary{
+      background:rgba(255,255,255,.04);
+      color:var(--white);
+      border:1px solid rgba(215,177,61,.45);
+    }
+
+    .footer{
+      position:relative;
+      z-index:1;
+      margin-top:10px;
+      padding:24px 18px;
+      text-align:center;
+      border-top:1px solid rgba(215,177,61,.18);
+      background:rgba(1,8,17,.42);
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.7;
+    }
+
+    .footer strong{
+      color:var(--gold-400);
+    }
+
+    .modal{
+      position:fixed;
+      inset:0;
+      z-index:999;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      background:rgba(1,8,17,.78);
+      backdrop-filter:blur(8px);
+    }
+
+    .modal.active{
+      display:flex;
+    }
+
+    .modal-panel{
+      width:min(1100px,100%);
+      max-height:92vh;
+      overflow:auto;
+      border-radius:22px;
+      background:
+        linear-gradient(180deg,var(--navy-800),var(--navy-950));
+      border:1px solid rgba(215,177,61,.38);
+      box-shadow:var(--shadow);
+    }
+
+    .modal-header{
+      position:sticky;
+      top:0;
+      z-index:3;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:20px 22px;
+      background:rgba(6,26,51,.96);
+      border-bottom:1px solid rgba(215,177,61,.2);
+      backdrop-filter:blur(10px);
+    }
+
+    .modal-title{
+      color:var(--gold-400);
+      font-size:22px;
+    }
+
+    .close{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      border:1px solid rgba(215,177,61,.4);
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      font-size:24px;
+      cursor:pointer;
+    }
+
+    .modal-body{
+      padding:24px;
+    }
+
+    .pamphlet-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .pamphlet{
+      padding:24px 20px;
+      border-radius:18px;
+      background:rgba(255,255,255,.055);
+      border:1px solid rgba(215,177,61,.25);
+    }
+
+    .pamphlet h3{
+      margin-bottom:12px;
+      color:var(--gold-400);
+      text-align:center;
+      font-size:19px;
+    }
+
+    .pamphlet p{
+      margin-bottom:14px;
+      color:var(--text);
+      font-size:13px;
+      line-height:1.6;
+    }
+
+    .pamphlet ul{
+      display:grid;
+      gap:9px;
+      list-style:none;
+    }
+
+    .pamphlet li{
+      position:relative;
+      padding-left:22px;
+      color:var(--text);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .pamphlet li::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      color:var(--gold-400);
+      font-weight:700;
+    }
+
+    .modal-cta{
+      margin-top:20px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .modal-cta .action{
+      min-width:260px;
+    }
+
+    @media(max-width:820px){
+      .service-grid,
+      .pamphlet-grid{
+        grid-template-columns:1fr;
+      }
+
+      .links-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding-top:28px;
+      }
+
+      .brand-name{
+        font-size:32px;
+        letter-spacing:4px;
+      }
+
+      .brand-subtitle{
+        font-size:10px;
+        letter-spacing:3px;
+      }
+
+      .photo-frame{
+        width:148px;
+        height:148px;
+      }
+
+      .name{
+        font-size:24px;
+      }
+
+      .role{
+        font-size:16px;
+      }
+
+      .intro{
+        padding:24px 20px 14px;
+        font-size:14px;
+      }
+
+      .section{
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      .modal-body{
+        padding:16px;
+      }
+
+      .modal-header{
+        padding:16px;
+      }
+
+      .modal-title{
+        font-size:19px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+    <main class="card">
+
+      <section class="hero">
+
+        <div class="brand">
+          <div class="brand-symbol">♆</div>
+          <div class="brand-name">TRITON</div>
+          <div class="brand-subtitle">SERVIÇO EMPRESARIAL</div>
+        </div>
+
+        <div class="photo-frame">
+          <img src="img/anderson.png" alt="Foto de Anderson Salvador" class="photo">
+        </div>
+
+        <h1 class="name">ANDERSON SALVADOR</h1>
+        <p class="role">Serviço Empresarial</p>
+
+      </section>
+
+      <section class="intro">
+        Especialista em organização financeira empresarial, regularização de empresas e Carnê-Leão.
+      </section>
+
+      <section class="section">
+
+        <div class="section-title">Principais serviços</div>
+
+        <div class="service-grid">
+
+          <article class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>BPO Financeiro</h3>
+            <p>Organização e acompanhamento da rotina financeira da sua empresa.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">📄</div>
+            <h3>Regularização Empresarial</h3>
+            <p>Apoio para formalizar, atualizar e regularizar sua empresa.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🧾</div>
+            <h3>Carnê-Leão</h3>
+            <p>Apuração mensal e organização das obrigações para profissionais autônomos.</p>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="section">
+
+        <div class="section-title">Canais de atendimento</div>
+
+        <div class="links-grid">
+
+          <a class="action" href="https://wa.me/55SEUNUMERO" target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+
+          <a class="action" href="https://tritonempresarial.lovable.app/" target="_blank" rel="noopener noreferrer">
+            Site
+          </a>
+
+          <a class="action" href="mailto:contato@tritonservicoempresarial.com.br">
+            E-mail
+          </a>
+
+          <a class="action" href="https://www.instagram.com/triton.contabilidade/" target="_blank" rel="noopener noreferrer">
+            Instagram
+          </a>
+
+          <a class="action secondary" href="https://tritonfinanceiro.lovable.app/" target="_blank" rel="noopener noreferrer">
+            Diagnóstico Financeiro
+          </a>
+
+          <button class="action secondary" type="button" id="openServices">
+            Serviços
+          </button>
+
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p><strong>Triton Serviço Empresarial</strong></p>
+        <p>Segurança • Confiança • Resultados</p>
+      </footer>
+
+    </main>
+  </div>
+
+  <div class="modal" id="servicesModal" aria-hidden="true">
+
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="servicesTitle">
+
+      <div class="modal-header">
+        <h2 class="modal-title" id="servicesTitle">Nossos Serviços</h2>
+        <button class="close" type="button" id="closeServices" aria-label="Fechar">×</button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="pamphlet-grid">
+
+          <article class="pamphlet">
+            <h3>BPO Financeiro</h3>
+            <p>
+              Terceirização da rotina financeira para melhorar o controle, reduzir atrasos e apoiar decisões mais seguras.
+            </p>
+            <ul>
+              <li>Contas a pagar e receber</li>
+              <li>Conciliação bancária</li>
+              <li>Fluxo de caixa</li>
+              <li>Controle de inadimplência</li>
+              <li>Organização de documentos financeiros</li>
+              <li>Relatórios e indicadores gerenciais</li>
+              <li>Acompanhamento financeiro periódico</li>
+              <li>Apoio à tomada de decisão</li>
+            </ul>
+          </article>
+
+          <article class="pamphlet">
+            <h3>Regularização Empresarial</h3>
+            <p>
+              Suporte para manter a empresa formalizada, atualizada e em conformidade com os órgãos responsáveis.
+            </p>
+            <ul>
+              <li>Abertura de empresa</li>
+              <li>Alterações cadastrais e contratuais</li>
+              <li>Baixa de empresa</li>
+              <li>Atualização de CNPJ</li>
+              <li>Orientação sobre emissão de notas fiscais</li>
+              <li>Regularização de pendências cadastrais</li>
+              <li>Apoio com alvarás e licenças</li>
+              <li>Acompanhamento do processo</li>
+            </ul>
+          </article>
+
+          <article class="pamphlet">
+            <h3>Carnê-Leão</h3>
+            <p>
+              Organização e apuração mensal para profissionais autônomos e pessoas físicas com rendimentos sujeitos ao recolhimento.
+            </p>
+            <ul>
+              <li>Organização dos rendimentos recebidos</li>
+              <li>Registro de despesas dedutíveis</li>
+              <li>Cálculo mensal do imposto</li>
+              <li>Preenchimento do Carnê-Leão</li>
+              <li>Emissão da guia de pagamento</li>
+              <li>Acompanhamento mensal</li>
+              <li>Orientação para evitar multas</li>
+              <li>Organização para a declaração anual</li>
+            </ul>
+          </article>
+
+        </div>
+
+        <div class="modal-cta">
+          <a class="action" href="https://wa.me/55SEUNUMERO" target="_blank" rel="noopener noreferrer">
+            Solicitar atendimento
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("servicesModal");
+    const openButton = document.getElementById("openServices");
+    const closeButton = document.getElementById("closeServices");
+
+    function openModal(){
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(){
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden","true");
+      document.body.style.overflow = "";
+    }
+
+    openButton.addEventListener("click", openModal);
+    closeButton.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", function(event){
+      if(event.target === modal){
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", function(event){
+      if(event.key === "Escape" && modal.classList.contains("active")){
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
